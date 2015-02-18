@@ -19,19 +19,11 @@ html, body {
   height: $navBarHeight;
   z-index: 1000; /* high z-index since nav bar should be in front. An element with greater stack order is always in front of an element with a lower stack order */
   background-color: $navBarBackgroundColor;
-  transform-style: preserve-3d;
 }
 
 .navBar .handle {
   position: relative;
-  
-  /* vertically align  */
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-  transform: translateY(-50%);
-  
   text-align: left;
-  
   overflow: hidden;
   width: 100%;
   height: $navBarHeight;
@@ -46,7 +38,7 @@ html, body {
   display: none;
 }
 
-.navBar .navItems {
+.navBar ul {
   position: relative;
   overflow: hidden;
   color: black;
@@ -55,39 +47,37 @@ html, body {
   margin: 0;
   text-align: center;
   background-color: $navBarBackgroundColor;
-  
-  /* vertically align  */
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-  transform: translateY(-50%);
-  
-  /* open/close menu animation */
-  -webkit-transition: max-height 0.4s;
+  -webkit-transition: max-height 0.4s; 
   transition: max-height 0.4s;
 }
 
-.navBar .navItems a {
+.navBar ul a {
   text-decoration: none;
   color: inherit;
 }
 
-.navBar .navItems li {
+.navBar ul li {
   display: inline-block;
+  height: $navBarHeight;
   padding-left: 16px;
   padding-right: 16px;
 }
 
-.navBar .navItems li:hover {
+.navBar ul li:hover {
   background-color: $headerBackgroundColor;
 }
 
 /* for smaller viewports */
 @media screen and (max-width: 580px) {
-  .navBar .navItems {
+  .navBar ul {
     max-height: 0;
   }
   
-  .navBar .navItems li {
+  .navBar .showing {
+    max-height: 280px;
+  }
+  
+  .navBar ul li {
     box-sizing: border-box;
     padding-left: 16px;
     width: 100%;
