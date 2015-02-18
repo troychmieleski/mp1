@@ -1,5 +1,6 @@
 @import url('http://fonts.googleapis.com/css?family=Bree+Serif|Merriweather');
 @import url('http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css');
+@import url('http://fonts.googleapis.com/css?family=Roboto:400,500');
 
 html, body {
   margin: 0pt auto;
@@ -7,28 +8,157 @@ html, body {
   height: 100%;
 }
 
-header  {
+/* Nav bar */
+
+.navBar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  font-family: $robotoFontFamily;
+  height: $navBarHeight;
+  z-index: 1000; /* high z-index since nav bar should be in front. An element with greater stack order is always in front of an element with a lower stack order */
+  background-color: $navBarBackgroundColor;
+  transform-style: preserve-3d;
+}
+
+.navBar .handle {
+  position: relative;
+  
+  /* vertically align  */
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+  
+  text-align: left;
+  
+  overflow: hidden;
+  width: 100%;
+  height: $navBarHeight;
+  background: $navBarBackgroundColor;
+  font-weight: $robotoMediumFontWeight;
+  text-align: left;
+  padding-left: 16px;
+  padding-right: 16px;
+  box-sizing: border-box;
+  cursor: pointer;
+  color: inherit;
+  display: none;
+}
+
+.navBar .navItems {
+  position: relative;
+  overflow: hidden;
+  color: black;
+  font-weight: $robotoRegularFontWeight;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+  background-color: $navBarBackgroundColor;
+  
+  /* vertically align  */
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+  
+  /* open/close menu animation */
+  -webkit-transition: max-height 0.4s;
+  transition: max-height 0.4s;
+}
+
+.navBar .navItems a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.navBar .navItems li {
+  display: inline-block;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+.navBar .navItems li:hover {
+  background-color: $headerBackgroundColor;
+}
+
+/* for smaller viewports */
+@media screen and (max-width: 580px) {
+  .navBar .navItems {
+    max-height: 0;
+  }
+  
+  .navBar .navItems li {
+    box-sizing: border-box;
+    padding-left: 16px;
+    width: 100%;
+    text-align: left;
+  }
+  
+  .navBar .handle {
+    display: block;
+  }
+}
+
+/* Header */
+
+.siteHeader  {
   position: relative;
   overflow: auto; /* prevent margin collapse */
-  margin: 0pt auto;
-  height: 100%;
-  background-color: gray;
-}
-
-#headerContainer {
-  position: relative;
-  margin: $headerMargin;
-  height: calc(100% - 2*#{$headerMargin}); /* interpolate Sass variable */
-  background-color: green;
-}
-
-.blogTitle {
-  position: relative;
   margin: 0pt;
-  font-size: 100%;
-  color: white;
+  height: 44%;
+  min-height: calc(#{$navBarHeight} + #{$profileHeight}  + 10%);
+  max-height: 300px;
+  background-color: white;
 }
 
-nav {
-	background-color: #dedede;
+.siteHeader .background {
+  position: relative;
+  height: calc(100% - #{.5*$profileHeight});
+  background-color: $headerBackgroundColor;
+}
+
+.siteHeader .profile {
+  position: absolute;
+  left: 50%;
+  bottom: 0%;
+  margin-left: calc(-.5*#{$profileHeight});
+  width: $profileHeight;
+  height: $profileHeight;
+  z-index: 1;
+  -webkit-clip-path: circle(50.0% at 50% 50%);
+  background-color: $headerBackgroundColor;
+}
+
+.siteHeader .profile .profileImage {
+  position: absolute;
+  margin-top: $profileBorderWidth;
+  margin-left: $profileBorderWidth;
+  width: $profilePictureHeight;
+  height: $profilePictureHeight;
+  z-index: 2;
+  -webkit-clip-path: circle(50.0% at 50% 50%);
+}
+
+/* Title */
+
+.titleSection {
+  position: relative;
+  height: 20%;
+  max-height: 100px;
+  transform-style: preserve-3d;
+  background-color: white;
+}
+
+.titleSection .title {
+  position: relative;
+  text-align: center;
+  
+  /* vertically align title in title section */
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+  
+  font-family: $helveticaNeueThinFontFamily;
+  font-size: xx-large;
+  color: black;
 }

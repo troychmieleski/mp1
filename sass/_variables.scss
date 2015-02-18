@@ -1,9 +1,23 @@
-$orange         : #BD3613;
-$blue           : #2176C7;
+$headerBackgroundColor : #f5f5f5;
+$navBarBackgroundColor : white;
+
 
 $font-primary: Merriweather, serif;
 $font-secondary: Bree Serif, serif;
 
+// Helvetica Neue
+$helveticaNeueThinFontFamily: "HelveticaNeueThin", "HelveticaNeue-Thin", "Helvetica Neue Thin";
+$helveticaNeueRegularFontFamily: "HelveticaNeue", "Helvetica Neue", "HelveticaNeueRoman", "HelveticaNeue-Roman", "Helvetica Neue Roman", 'TeXGyreHerosRegular', "Helvetica";
+
+// Roboto
+$robotoFontFamily: "Roboto";
+$robotoRegularFontWeight: 400;
+$robotoMediumFontWeight: 500;
+
 $default-border-radius : 10px;
 
-$headerMargin : 16pt;
+$navBarMargin : 16px;
+$navBarHeight : 56px;
+$profileHeight : 120px;
+$profilePictureHeight : 116px;
+$profileBorderWidth : calc((#{$profileHeight} - #{$profilePictureHeight})/2);

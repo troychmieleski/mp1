@@ -1,16 +1,20 @@
-var divs = document.getElementsByTagName('div');
-for(var i=0; i<divs.length; i++) {
-  divs[i].addEventListener("click", highlightThis);
-  /*
-  divs[i].addEventListener("click", highlightThis, true);
-  divs[i].addEventListener("click", highlightThis, false);*/
-}
-
-function highlightThis(event) {
-    //event.stopPropagation();
+$(document).ready(function() {
+  var open = false;
   
-    var backgroundColor = this.style.backgroundColor;
-    this.style.backgroundColor='yellow';
-    alert(this.className);
-    this.style.backgroundColor=backgroundColor;
-}
+  var $navItems = $('.navItems');
+  
+  $('.handle').on('click', function() {
+    open = !open;
+    var shouldOpen = open;
+    var openString = shouldOpen ? 'open' : 'close';
+    alert('navigation bar should be ' + openString);
+    
+    var maxHeight = 0;
+  
+    if (shouldOpen) {
+      maxHeight = 5*56;
+    }
+    
+    $navItems.css({"max-height": maxHeight});
+  });
+});

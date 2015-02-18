@@ -1,0 +1,1 @@
+$(document).ready(function(){var a=!1,b=$(".navItems");$(".handle").on("click",function(){a=!a;var c=a,d=c?"open":"close";alert("navigation bar should be "+d);var e=0;c&&(e=280),b.css({"max-height":e})})});
