@@ -26,7 +26,7 @@ $(document).ready(function() {
 });
 
 function carousel() {  
-  var intervalSpeed = 1000;
+  var intervalSpeed = 3000;
   var width = "720px";
   var animationSpeed = 1000;
   var currentSlide = 1;
@@ -37,19 +37,34 @@ function carousel() {
   var $carouselImage = $carouselImages.find('carouselImage');
   
   // carousel animation interval
-  var interval = setInterval(function() { 
-    // animate margin-left property to slide carousel images
-    $carouselImages.animate({'margin-left': '-='+width}, animationSpeed, function() {
-      currentSlide++;
-      var numberOfCarouselImages = $(".carouselImages li").length;
-      
-      console.log(numberOfCarouselImages);
-      
-      if (currentSlide === numberOfCarouselImages) {
-        console.log('reset');
-        currentSlide = 1;
-        $carouselImages.css('margin-left', 0);
-      }
-    });
-  }, intervalSpeed);
+  var interval;
+  
+  function startCarousel() {
+      interval = setInterval(function() { 
+      // animate margin-left property to slide carousel images
+      $carouselImages.animate({'margin-left': '-='+width}, animationSpeed, function() {
+        currentSlide++;
+        var numberOfCarouselImages = $carouselImages.find('li').length;
+        
+        // reset image carousel after sliding through all images
+        if (currentSlide === numberOfCarouselImages) {
+          currentSlide = 1;
+          $carouselImages.css('margin-left', 0);
+        }      
+      });
+    }, intervalSpeed);
+  }
+
+  function stopCarousel() {
+    clearInterval(interval);
+  }
+  
+  // stop carousel on mouseover
+  $carousel.on('mouseenter', stopCarousel);
+  
+  // start carousel on mouseleave
+  $carousel.on('mouseleave', startCarousel);
+
+  // carousel should be started initially
+  startCarousel();
 }
