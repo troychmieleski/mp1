@@ -1,4 +1,5 @@
 $(document).ready(function() {
+  // --- Navigation ---
   var open = false;
   
   var $navItems = $('.navItems');
@@ -19,4 +20,36 @@ $(document).ready(function() {
     //$navItems.css({"max-height": maxHeight});
       $('nav ul').toggleClass('showing');
   });
+  
+  // --- Image carousel ---
+  carousel();
 });
+
+function carousel() {  
+  var intervalSpeed = 1000;
+  var width = "720px";
+  var animationSpeed = 1000;
+  var currentSlide = 1;
+  
+  // cache DOM elements
+  var $carousel = $('.carousel');
+  var $carouselImages = $carousel.find('.carouselImages');
+  var $carouselImage = $carouselImages.find('carouselImage');
+  
+  // carousel animation interval
+  var interval = setInterval(function() { 
+    // animate margin-left property to slide carousel images
+    $carouselImages.animate({'margin-left': '-='+width}, animationSpeed, function() {
+      currentSlide++;
+      var numberOfCarouselImages = $(".carouselImages li").length;
+      
+      console.log(numberOfCarouselImages);
+      
+      if (currentSlide === numberOfCarouselImages) {
+        console.log('reset');
+        currentSlide = 1;
+        $carouselImages.css('margin-left', 0);
+      }
+    });
+  }, intervalSpeed);
+}

@@ -152,3 +152,36 @@ html, body {
   font-size: xx-large;
   color: black;
 }
+
+/* Posts */
+
+.posts {
+  position: relative;
+  width: 100%;
+  height: 400px;
+  background-color: gray;
+}
+
+/* Carousel */
+
+.posts .carousel {
+  position: relative;
+  width: 720px;
+  height: 100%;
+  overflow: hidden;
+}
+
+.posts .carousel .carouselImages {
+  display: block;
+  width: 6000px;
+  height: 400px;
+  margin: 0px;
+  padding: 0;
+}
+
+.posts .carousel .carouselImages .carouselImage {
+  float: left;
+  list-style-type: none;
+  width: 720px;
+  height: 400px;
+}
