@@ -7,6 +7,8 @@ $(document).ready(function() {
 });
 
 function navigation() {
+  navigationItems();
+  
   var open = false;
   
   var $navItems = $('.navItems');
@@ -26,6 +28,39 @@ function navigation() {
     
     //$navItems.css({"max-height": maxHeight});
       $('nav ul').toggleClass('showing');
+  });
+}
+
+function navigationItems() {
+  // smooth scroll to associated content when nav bar items are clicked
+  $('.navItemHome').on('click', function() {
+    $('html, body').animate({
+        scrollTop: $(".home").offset().top
+    }, 2000);
+  });
+  
+  $('.navItemPosts').on('click', function() {
+    $('html, body').animate({
+        scrollTop: $(".posts").offset().top
+    }, 2000);
+  });
+  
+    $('.navItemResume').on('click', function() {
+    $('html, body').animate({
+        scrollTop: $(".resume").offset().top
+    }, 2000);
+  });
+  
+  $('.navItemAbout').on('click', function() {
+    $('html, body').animate({
+        scrollTop: $(".about").offset().top
+    }, 2000);
+  });
+  
+  $('.navItemContact').on('click', function() {
+    $('html, body').animate({
+        scrollTop: $(".contact").offset().top
+    }, 2000);
   });
 }
 
@@ -92,7 +127,7 @@ function carousel() {
         // reset image carousel after sliding through all images
         if (currentSlide === 1) {
           currentSlide = numberOfCarouselImages;
-          $carouselImages.css('margin-left', '-='+(720*(numberOfCarouselImages-1));
+          $carouselImages.css('margin-left', '-='+(720*(numberOfCarouselImages-1)));
         }      
       });
   }
